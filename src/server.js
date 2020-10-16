@@ -4,6 +4,7 @@ const env =require('dotenv').config();
 const bodyParser=require("body-parser");
 const mongoose=require('mongoose');
 const userRoutes=require('./routes/auth');
+const adminRoutes=require('./routes/admin/auth');
 
 mongoose.connect(
     process.env.MongoURL,
@@ -15,6 +16,7 @@ mongoose.connect(
 app.use(bodyParser.json());
 
 app.use('/api',userRoutes);
+app.use('/api',adminRoutes);
 
 
 

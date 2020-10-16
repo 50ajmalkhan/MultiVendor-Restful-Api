@@ -1,4 +1,4 @@
-const User=require('../model/users');
+const User=require('../../model/users');
 const jwt=require('jsonwebtoken');
 const env=require('dotenv').config();
 
@@ -8,16 +8,16 @@ exports.signup=(req,res)=>{
     .exec((error,user)=>{
         if(user)
         {
-            return res.status(200).json({message:"User Already Registered"});
+            return res.status(200).json({message:"Admin Already Registered"});
         }
         const {firstName,lastName,email,password}=req.body;
-        const _user=new User({firstName,lastName,email,password,userName:Math.random().toString()});
+        const _user=new User({firstName,lastName,email,password,userName:Math.random().toString(),role:"admin"});
         _user.save((error,data)=>{
             if(error){
                 return res.status(400).json({message:"someThing Went Wrong"});
             }
             if(data){
-                return res.status(201).json({message:"User Created Successfully..!"})
+                return res.status(201).json({message:"Admin Created Successfully..!"})
             }
         });
     })
