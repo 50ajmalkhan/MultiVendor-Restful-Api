@@ -3,22 +3,18 @@ const app =express();
 const env =require('dotenv').config();
 const bodyParser=require("body-parser");
 const mongoose=require('mongoose');
+const userRoutes=require('./routes/auth');
 
 mongoose.connect(
     process.env.MongoURL,
-    {useNewUrlParser:true,useUnifiedTopology:true}
+    {useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex:true}
 ).then(()=>{
     console.log('DataBase Connected')
 });
 
 app.use(bodyParser.json());
 
-app.get('/',(req,res,net)=>{
-    res.status(200).json({message:"Hello From Server"});
-});
-app.post('/data',(req,res,net)=>{
-    res.status(200).json({message:req.body});
-})
+app.use('/api',userRoutes);
 
 
 
