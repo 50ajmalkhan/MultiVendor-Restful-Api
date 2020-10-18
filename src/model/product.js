@@ -38,7 +38,7 @@ const productSchema=new mongoose.Schema({
             {
             userId:{type:mongoose.Schema.Types.ObjectId, ref: 'User'},
             review:String
-            }
+            },
         ],
         category : {
             type:mongoose.Schema.Types.ObjectId, ref: 'Category',required:true
