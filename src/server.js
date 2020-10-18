@@ -5,7 +5,8 @@ const bodyParser=require("body-parser");
 const mongoose=require('mongoose');
 const userRoutes=require('./routes/auth');
 const adminRoutes=require('./routes/admin/auth');
-const CategoryRoutes=require('../src/routes/category')
+const CategoryRoutes=require('../src/routes/category');
+const productRoutes=require('../src/routes/product')
 
 mongoose.connect(
     process.env.MongoURL,
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use('/api',userRoutes);
 app.use('/api',adminRoutes);
 app.use('/api',CategoryRoutes);
+app.use('/api',productRoutes);
 
 
 
