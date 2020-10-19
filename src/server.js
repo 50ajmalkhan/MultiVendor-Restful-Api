@@ -6,7 +6,8 @@ const mongoose=require('mongoose');
 const userRoutes=require('./routes/auth');
 const adminRoutes=require('./routes/admin/auth');
 const CategoryRoutes=require('../src/routes/category');
-const productRoutes=require('../src/routes/product')
+const productRoutes=require('../src/routes/product');
+const addToCartRoutes=require('./routes/cart');
 
 mongoose.connect(
     process.env.MongoURL,
@@ -21,6 +22,7 @@ app.use('/api',userRoutes);
 app.use('/api',adminRoutes);
 app.use('/api',CategoryRoutes);
 app.use('/api',productRoutes);
+app.use('/api',addToCartRoutes);
 
 
 
